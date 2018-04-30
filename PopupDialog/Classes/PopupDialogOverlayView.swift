@@ -107,7 +107,7 @@ final public class PopupDialogOverlayView: UIView {
         backgroundColor = .clear
         alpha = 0
 
-        addSubview(blurView)
+        //addSubview(blurView)
         addSubview(overlay)
     }
 
