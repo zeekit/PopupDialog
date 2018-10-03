@@ -93,7 +93,7 @@ final public class PopupDialog: UIViewController {
                 title: String?,
                 message: String?,
                 image: UIImage? = nil,
-                buttonAlignment: UILayoutConstraintAxis = .vertical,
+                buttonAlignment: NSLayoutConstraint.Axis = .vertical,
                 transitionStyle: PopupDialogTransitionStyle = .bounceUp,
                 preferredWidth: CGFloat = 340,
                 gestureDismissal: Bool = true,
@@ -131,7 +131,7 @@ final public class PopupDialog: UIViewController {
      */
     @objc public init(
         viewController: UIViewController,
-        buttonAlignment: UILayoutConstraintAxis = .vertical,
+        buttonAlignment: NSLayoutConstraint.Axis = .vertical,
         transitionStyle: PopupDialogTransitionStyle = .bounceUp,
         preferredWidth: CGFloat = 340,
         gestureDismissal: Bool = true,
@@ -158,10 +158,10 @@ final public class PopupDialog: UIViewController {
         modalPresentationCapturesStatusBarAppearance = true
 
         // Add our custom view to the container
-        addChildViewController(viewController)
+        addChild(viewController)
         popupContainerView.stackView.insertArrangedSubview(viewController.view, at: 0)
         popupContainerView.buttonStackView.axis = buttonAlignment
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
 
         // Allow for dialog dismissal on background tap and dialog pan gesture
         if gestureDismissal {
@@ -306,7 +306,7 @@ final public class PopupDialog: UIViewController {
 extension PopupDialog {
 
     /// The button alignment of the alert dialog
-    @objc public var buttonAlignment: UILayoutConstraintAxis {
+    @objc public var buttonAlignment: NSLayoutConstraint.Axis {
         get {
             return popupContainerView.buttonStackView.axis
         }
